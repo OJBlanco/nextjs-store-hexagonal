@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import { Header } from "app/presentation/shared/components/Header";
 import { Footer } from "app/presentation/shared/components/Footer";
 
+import "./globals.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
