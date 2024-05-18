@@ -1,15 +1,11 @@
-"use client";
+"use client"
 
-import { ErrorProps } from "app/modules/shared/domain/ErrorProps";
+import { ErrorProps } from 'app/modules/shared/domain/ErrorProps';
 
-export default function Error({ error, reset }: ErrorProps) {
+import { Error } from 'app/presentation/shared/components/Errors';
+
+export default function GloablError({ reset }: ErrorProps) {
   return (
-    <div style={{
-      padding: '10rem',
-    }}>
-      <h1>:c</h1>
-      <p>Ha ocurrido un error</p>
-      <button onClick={reset}>Intentar de nuevo</button>
-    </div>
+    <Error reset={reset} />
   )
 }
