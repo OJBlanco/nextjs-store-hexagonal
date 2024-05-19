@@ -1,0 +1,34 @@
+.MainProducts > h3 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.MainProducts__grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 400px 400px;
+}
+
+.MainProducts__grid > article {
+  position: relative;
+  z-index: 1;
+  min-height: 400px;
+}
+
+.MainProducts__grid > article > img {
+  height: 400px;
+  opacity: 0.4;
+  object-fit: cover;
+}
+
+.MainProducts__grid > article > p {
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+  z-index: 2;
+  font-size: 1.5rem;
+  font-weight: 700;
+  max-width: 300px;
+  text-align: right;
+}
