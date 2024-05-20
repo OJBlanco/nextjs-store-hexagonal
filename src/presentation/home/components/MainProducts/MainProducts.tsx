@@ -6,7 +6,7 @@ import styles from './MainProducts.module.css'
 export const MainProducts = async () => {
   const productRepository = new ServiceProductRepository();
 
-  const products = await productRepository.getAll()
+  const products = await productRepository.getAll();
 
   return (
     <section className={styles.MainProducts}>
