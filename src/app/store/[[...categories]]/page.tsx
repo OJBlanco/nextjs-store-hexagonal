@@ -1,4 +1,4 @@
-import { ServiceProductRepository } from "app/modules/product/infrastructure/ServiceProductRepository";
+import { UseGetAllProducts } from "app/presentation/shared/hooks/UseGetAllProducts";
 import { ProductsWrapper } from "app/presentation/store/components/ProductWrapper/ProductsWrapper"
 
 interface CategoryProps {
@@ -9,9 +9,7 @@ interface CategoryProps {
 }
 
 export default async function Category(props: CategoryProps) {
-  const productRepository = new ServiceProductRepository();
-
-  const products = await productRepository.getAll();
+  const { products } = await UseGetAllProducts();
 
   const { categories } = props.params
 
