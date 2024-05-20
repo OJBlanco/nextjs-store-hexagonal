@@ -1,12 +1,10 @@
-import { ServiceProductRepository } from "app/modules/product/infrastructure/ServiceProductRepository";
-
+import { UseGetAllProducts } from "app/presentation/shared/hooks/UseGetAllProducts";
 import { ProductItem } from "./components/ProductItem/ProductItem";
+
 import styles from './MainProducts.module.css'
 
-export const MainProducts = async () => {
-  const productRepository = new ServiceProductRepository();
-
-  const products = await productRepository.getAll();
+export const MainProducts = async () => { 
+  const { products } = await UseGetAllProducts();
 
   return (
     <section className={styles.MainProducts}>

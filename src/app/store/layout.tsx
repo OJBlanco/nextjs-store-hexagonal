@@ -1,7 +1,9 @@
+import { Navbar } from "app/presentation/shared/components/Navbar/Navbar";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main>
-      <nav>Navegación de las categorías</nav>
+      <Navbar />
       {children}
     </main>
   )
