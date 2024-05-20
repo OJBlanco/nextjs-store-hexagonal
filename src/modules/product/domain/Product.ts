@@ -17,4 +17,5 @@ export interface Product {
   admin_graphql_api_id: string;
   images: ProductImage[];
   image: ProductImage;
+  price: number;
 }
