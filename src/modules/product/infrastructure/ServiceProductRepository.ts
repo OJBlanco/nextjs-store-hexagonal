@@ -8,6 +8,19 @@ export class ServiceProductRepository implements ProductRepository {
     'X-Shopify-Access-Token': env.SHOPIFY_API_KEY
   })
 
+  async get(id: number): Promise<Product> {
+    try {
+      const request = await fetch(`${env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json?ids=${id}`, {
+        headers: this.headers,
+      })
+
+      const { products } = await request.json()
+      return products[0];
+    } catch (error) {
+      throw new Error(`Error: ${error}`);
+    }
+  }
+
   async getAll(): Promise<Product[]> {
     try {
       const request = await fetch(`${env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json`, {
