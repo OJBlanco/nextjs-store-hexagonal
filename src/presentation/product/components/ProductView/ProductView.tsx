@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from './ProductView.module.css'
 import { Product } from "app/modules/product/domain/Product";
 import { ProductViewItemsOrder } from "./components";
+import { SanitizeHTML } from "app/presentation/shared/components/SanitizeHTML";
 
 interface ProductViewProps {
   product: Product
@@ -25,9 +26,9 @@ export const ProductView = ({ product }: ProductViewProps) => {
       <section className={styles.ProductView__info}>
         <h1 className={styles.ProductView__info__title}>{product.title}</h1>
         <p className={styles.ProductView__info__category}>{product.tags}</p>
-        <p className={styles.ProductView__info__description}>
+        <SanitizeHTML tag="p" className={styles.ProductView__info__description}>
           {product.body_html}
-        </p>
+        </SanitizeHTML>
         <span className={styles.ProductView__info__price}>
           $ {product.variants[0].price}
         </span>
