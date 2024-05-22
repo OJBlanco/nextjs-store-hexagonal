@@ -1,5 +1,6 @@
 import { ProductView } from "app/presentation/product/components/ProductView/ProductView"
 import { UseGetProductById } from "app/presentation/product/hooks/UseGetProductById"
+import { redirect } from "next/navigation"
 
 
 interface ProductPageProps {
@@ -9,8 +10,13 @@ interface ProductPageProps {
 }
 
 export default async function ProductPage({ searchParams }: ProductPageProps) {
-  const id = Number(searchParams.id)
-  const { product } = await UseGetProductById(id)
+  const { id } = searchParams
+
+  if (!id) {
+    redirect('/store')
+  }
+
+  const { product } = await UseGetProductById(Number(id))
 
   return <ProductView product={product} />
 }
