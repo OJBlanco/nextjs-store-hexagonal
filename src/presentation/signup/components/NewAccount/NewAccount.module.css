@@ -1,0 +1,87 @@
+.NewAccountForm {
+  display: block;
+  margin: 5rem auto 0;
+  max-width: 30rem;
+}
+.NewAccountForm__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  background-image: linear-gradient(270deg, #4f56ff, #ff4980);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.NewAccountForm__form {
+  display: grid;
+  grid-template-areas: "a b" "c c" "d d" "e e" "f f" "g h";
+  column-gap: 1rem;
+  row-gap: 2rem;
+}
+
+.NewAccountForm__form input[type="text"],
+.NewAccountForm__form input[type="password"] {
+  color: #fff;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #302c3f;
+  font-size: 1.25rem;
+  width: 100%;
+}
+
+.NewAccountForm__form > input[type="text"]:focus,
+.NewAccountForm__form input[type="password"]:focus {
+  outline: none;
+  border-bottom: 1px solid #ff4980;
+}
+
+.NewAccountForm__form > :nth-child(1) {
+  grid-area: a;
+}
+
+.NewAccountForm__form > :nth-child(2) {
+  grid-area: b;
+}
+
+.NewAccountForm__form > :nth-child(3) {
+  grid-area: c;
+}
+
+.NewAccountForm__form > :nth-child(4) {
+  grid-area: d;
+}
+
+.NewAccountForm__form > :nth-child(5) {
+  grid-area: e;
+}
+
+.NewAccountForm__form > :nth-child(6) {
+  grid-area: f;
+}
+
+.NewAccountForm__form > button {
+  border: 1px solid #ff4980;
+  background: transparent;
+  color: #fff;
+  padding: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}
+
+.NewAccountForm__form > button[type="submit"] {
+  grid-area: h;
+}
+
+.NewAccountForm__form > button[type="button"] {
+  grid-area: g;
+}
+
+.NewAccountForm__error {
+  color: red;
+  font-weight: 300;
+  margin-top: 1rem;
+}
