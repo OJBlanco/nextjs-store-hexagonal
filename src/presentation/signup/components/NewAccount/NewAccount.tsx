@@ -34,7 +34,9 @@ export const NewAccount = () => {
     try {
       event.preventDefault();
 
-      if (Object.keys(errors || {}).some(k => k.length)) {
+      console.log(errors, Object.values(errors || {}).some(k => k?.length > 0))
+
+      if (Object.values(errors || {}).some(k => k?.length > 0)) {
         return
       }
 
@@ -82,7 +84,6 @@ export const NewAccount = () => {
             name="email"
             value={formData.email}
             placeholder="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             disabled={loading}
             autoComplete="false"
             onChange={(ev) => handleChange('email', ev.target.value)}
