@@ -1,9 +1,16 @@
 "use server"
 
+import { UserCreator } from "app/modules/signup/application/UserCreator";
 import { Signup } from "app/modules/signup/domain/Signup";
-import { UserData } from "app/modules/signup/domain/UserData";
+import { GraphqlUserRepository } from "app/modules/signup/infrastructure/GraphqlUserRepository";
 
-export const handleCreateUser = (formData: Signup) => {
-  const userData = UserData.create(formData)
-  console.log("handleCreateUser", userData)    
+export const handleCreateUser = async (formData: Signup) => {
+  try {
+    const userRepository = new GraphqlUserRepository();
+    const userCreator = new UserCreator(userRepository);
+
+    await userCreator.create(formData);
+  } catch (error){
+    console.log(error)
+  }   
 }
