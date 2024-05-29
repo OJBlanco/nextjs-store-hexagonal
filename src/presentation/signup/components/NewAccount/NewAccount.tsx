@@ -34,8 +34,6 @@ export const NewAccount = () => {
     try {
       event.preventDefault();
 
-      console.log(errors, Object.values(errors || {}).some(k => k?.length > 0))
-
       if (Object.values(errors || {}).some(k => k?.length > 0)) {
         return
       }

@@ -9,9 +9,7 @@ export const handleCreateUser = async (formData: Signup) => {
     const userRepository = new GraphqlUserRepository();
     const userCreator = new UserCreator(userRepository);
 
-    console.log('>>> formData', formData)
-
-    await userCreator.create(formData)
+    await userCreator.create(formData);
   } catch (error){
     console.log(error)
   }   
