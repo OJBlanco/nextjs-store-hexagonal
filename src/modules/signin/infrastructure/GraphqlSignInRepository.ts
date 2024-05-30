@@ -7,7 +7,7 @@ import { Credential } from "../domain/Credential";
 import { AccessTokenResponse } from "../domain/AccessTokenResponse";
 
 export class GraphqlSignInRepository extends GraphQLClientBuilder implements SignInRepository {
-  async login(credentials: Credential): Promise<void> {
+  async login(credentials: Credential): Promise<AccessTokenResponse> {
     try {
       const cookiesStore = cookies()
       const graphqlClient = this.getClient();
@@ -28,6 +28,8 @@ export class GraphqlSignInRepository extends GraphQLClientBuilder implements Sig
           sameSite: "strict"
         })
       }
+
+      return request
     } catch (error) {
       throw new Error(`Error: ${error}`);
     }
