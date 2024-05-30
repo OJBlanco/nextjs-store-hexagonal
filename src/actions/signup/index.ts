@@ -1,16 +1,26 @@
 "use server"
 
-import { UserCreator } from "app/modules/signup/application/UserCreator";
+import { redirect } from "next/navigation";
+
+import { AccessTokenCreator } from "app/modules/signin/application/login/AccessTokenCreator";
+import { GraphqlSignInRepository } from "app/modules/signin/infrastructure/GraphqlSignInRepository";
+import { UserCreator } from "app/modules/signup/application/create/UserCreator";
 import { Signup } from "app/modules/signup/domain/Signup";
 import { GraphqlUserRepository } from "app/modules/signup/infrastructure/GraphqlUserRepository";
 
 export const handleCreateUser = async (formData: Signup) => {
-  try {
-    const userRepository = new GraphqlUserRepository();
-    const userCreator = new UserCreator(userRepository);
+  const userRepository = new GraphqlUserRepository();
+  const userCreator = new UserCreator(userRepository);
 
-    await userCreator.create(formData);
-  } catch (error){
-    console.log(error)
-  }   
+  const signinRepository = new GraphqlSignInRepository();
+  const accessTokenCreator = new AccessTokenCreator(signinRepository);
+
+  const request = await userCreator.create(formData);
+
+  const { customer } = request?.customerCreate;
+
+  if (customer?.firstName) {
+    await accessTokenCreator.login({ email: formData.email, password: formData.password });
+    redirect('/store')
+  }
 }
