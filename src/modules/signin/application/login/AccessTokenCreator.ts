@@ -5,6 +5,6 @@ export class AccessTokenCreator {
   constructor(private readonly repository: SignInRepository) { }
 
   async login(credentials: Credential) {
-    await this.repository.login(credentials);
+    return this.repository.login(credentials);
   }
 }
