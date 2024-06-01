@@ -2,19 +2,16 @@
 
 import { redirect } from "next/navigation";
 
-import { AccessTokenCreator } from "app/modules/signin/application/login/AccessTokenCreator";
-import { GraphqlSignInRepository } from "app/modules/signin/infrastructure/GraphqlSignInRepository";
-import { UserCreator } from "app/modules/signup/application/create/UserCreator";
-import { Signup } from "app/modules/signup/domain/Signup";
-import { GraphqlUserRepository } from "app/modules/signup/infrastructure/GraphqlUserRepository";
-import { Credential } from "app/modules/signin/domain/Credential";
+import { AccessTokenCreator } from "app/modules/auth/application/signin/AccessTokenCreator";
+import { GraphqlAuthRepository } from "app/modules/auth/infrastructure/GraphqlAuthRepository";
+import { Credential } from "app/modules/auth/domain/Credential";
+import { UserCreator } from "app/modules/auth/application/signup/UserCreator";
+import { Signup } from "app/modules/auth/domain/Signup";
 
 export const handleCreateUser = async (formData: Signup) => {
-  const userRepository = new GraphqlUserRepository();
-  const userCreator = new UserCreator(userRepository);
-
-  const signinRepository = new GraphqlSignInRepository();
-  const accessTokenCreator = new AccessTokenCreator(signinRepository);
+  const authRepository = new GraphqlAuthRepository();
+  const userCreator = new UserCreator(authRepository);
+    const accessTokenCreator = new AccessTokenCreator(authRepository);
 
   const request = await userCreator.create(formData);
 
@@ -27,8 +24,8 @@ export const handleCreateUser = async (formData: Signup) => {
 }
 
 export const handleLogin = async (credential: Credential) => {
-  const signinRepository = new GraphqlSignInRepository();
-  const accessTokenCreator = new AccessTokenCreator(signinRepository);
+  const authRepository = new GraphqlAuthRepository();
+  const accessTokenCreator = new AccessTokenCreator(authRepository);
 
   const request = await accessTokenCreator.login(credential);
 
