@@ -1,0 +1,30 @@
+.ShoppingCart {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+}
+
+.ShoppingCart__counter {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ff4980;
+  color: #fff;
+  padding: 0.25rem;
+  top: -1rem;
+  right: -1rem;
+  z-index: 2;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ShoppingCart > svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: #fff;
+}
