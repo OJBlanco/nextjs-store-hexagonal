@@ -28,3 +28,27 @@
   height: 1.25rem;
   fill: #fff;
 }
+
+.ShoppingCart__items {
+  position: absolute;
+  background: #13111a;
+  border: 1px solid #302c3f;
+  border-radius: 8px;
+  right: 0;
+  max-width: 320px;
+  min-width: 250px;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.ShoppingCart__buyButton {
+  background: #ff4980;
+  color: #fff;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}
