@@ -24,6 +24,8 @@ export const ProductView = ({ product }: ProductViewProps) => {
       price: product.price,
       quantity: counter,
       id: product.id,
+      image: product.image.src,
+      merchandiseId: product.variants[0].admin_graphql_api_id,
     });
   }
 

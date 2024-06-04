@@ -75,7 +75,7 @@ export class GraphqlAuthRepository extends GraphQLClientBuilder implements AuthR
       return request;
 
     } catch (error) {
-      throw new Error(`Error: ${error}`);
+      return error as CustomerAccessTokenResponse
     }
   }
 }
