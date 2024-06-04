@@ -1,15 +1,31 @@
+"use client";
+
+import { MouseEvent } from "react";
+
 import Image from "next/image";
 
-import styles from './ProductView.module.css'
 import { Product } from "app/modules/product/domain/Product";
-import { ProductViewItemsOrder } from "./components";
 import { SanitizeHTML } from "app/presentation/shared/components/SanitizeHTML";
+import { useShoppingCart } from "app/presentation/shared/hooks/UseShoppingCart";
+import { ProductViewItemsOrder } from "./components";
+import styles from './ProductView.module.css'
 
 interface ProductViewProps {
   product: Product
 }
 
 export const ProductView = ({ product }: ProductViewProps) => {
+  const { addToCart } = useShoppingCart();
+
+  const handleAddToCart = (event: MouseEvent, counter: number) => {
+    event.preventDefault();
+    addToCart({
+      title: product.title,
+      price: product.price,
+      quantity: counter,
+      id: product.id,
+    });
+  }
 
   return (
     <main className={styles.ProductView}>
@@ -32,7 +48,7 @@ export const ProductView = ({ product }: ProductViewProps) => {
         <span className={styles.ProductView__info__price}>
           $ {product.variants[0].price}
         </span>
-        <ProductViewItemsOrder maxQuantity={product.variants[0].inventory_quantity} />
+        <ProductViewItemsOrder maxQuantity={product.variants[0].inventory_quantity} onAdd={handleAddToCart} />
       </section>
     </main>
   )

@@ -5,10 +5,11 @@ import styles from "./ProductViewItemsOrder.module.css";
 
 
 interface ProductViewItemsOrderProps {
-  maxQuantity: number,
+  maxQuantity: number;
+  onAdd: (e: MouseEvent, counter: number) => void;
 }
 
-export const ProductViewItemsOrder = ({ maxQuantity }: ProductViewItemsOrderProps) => {
+export const ProductViewItemsOrder = ({ maxQuantity, onAdd }: ProductViewItemsOrderProps) => {
   const [counter, setCounter] = useState(1);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -41,6 +42,7 @@ export const ProductViewItemsOrder = ({ maxQuantity }: ProductViewItemsOrderProp
         <button
           className={styles.ProductViewItemsOrder__submit}
           type="submit"
+          onClick={e => onAdd(e, counter)}
         >
           <span>Add to cart</span>
         </button>
