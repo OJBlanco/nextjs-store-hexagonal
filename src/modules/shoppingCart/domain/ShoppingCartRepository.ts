@@ -1,5 +1,7 @@
 import { CartItem } from "./CartItem";
+import { CreateShoppingCartResponse } from "./CreateShoppingCartResponse";
 
 export interface ShoppingCartRepository {
-  addToCart: (cartItems: CartItem[]) => void;
+  setToCart: (cartItems: CartItem[]) => void;
+  create: (accessToken: string, cartItems: CartItem[]) => Promise<CreateShoppingCartResponse>;
 }

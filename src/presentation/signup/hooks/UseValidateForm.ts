@@ -3,9 +3,9 @@ import { useState } from "react";
 import { Email } from "app/modules/shared/domain/Email";
 import { Password } from "app/modules/shared/domain/Password";
 import { Phone } from "app/modules/shared/domain/Phone";
-import { LastName } from "app/modules/signup/domain/LastName";
-import { Name } from "app/modules/signup/domain/Name";
-import { Signup } from "app/modules/signup/domain/Signup";
+import { Name } from "app/modules/auth/domain/Name";
+import { LastName } from "app/modules/auth/domain/LastName";
+import { Signup } from "app/modules/auth/domain/Signup";
 
 interface ErrorsSignupForm {
   firstName: string;

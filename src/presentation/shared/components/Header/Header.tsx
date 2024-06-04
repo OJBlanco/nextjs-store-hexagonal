@@ -1,9 +1,11 @@
-import Link from 'next/link'
+import Link from "next/link";
+import dynamic from "next/dynamic";
 
-import { UseValidateAccessToken } from '../../hooks/UseValidateAccessToken';
+import { UseValidateAccessToken } from "../../hooks/UseValidateAccessToken";
 
-import { ShoppingCart } from '../ShoppingCart';
-import styles from './Header.module.css'
+import styles from "./Header.module.css"
+
+const NoSSRShoppingCart = dynamic(() => import("../ShoppingCart"), { ssr: false })
 
 export const Header = async () => {
   const { customer } = await UseValidateAccessToken();
@@ -25,7 +27,7 @@ export const Header = async () => {
       </nav>
       <div className={styles.Header__user}>
         {customer?.firstName ? (<p>Hola! {customer.firstName}</p>) : (<Link href="/login">Login</Link>)}
-        <ShoppingCart />
+        <NoSSRShoppingCart />
       </div>
     </header>)
 }

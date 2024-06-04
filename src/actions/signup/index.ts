@@ -7,6 +7,10 @@ import { GraphqlAuthRepository } from "app/modules/auth/infrastructure/GraphqlAu
 import { Credential } from "app/modules/auth/domain/Credential";
 import { UserCreator } from "app/modules/auth/application/signup/UserCreator";
 import { Signup } from "app/modules/auth/domain/Signup";
+import { CartItem } from "app/modules/shoppingCart/domain/CartItem";
+import { cookies } from "next/headers";
+import { GraphqlShoppingCartRepository } from "app/modules/shoppingCart/infrastructure/GraphqlShoppingCartRepository";
+import { ShoppingCartCreator } from "app/modules/shoppingCart/application/create/ShoppingCartCreator";
 
 export const handleCreateUser = async (formData: Signup) => {
   const authRepository = new GraphqlAuthRepository();
@@ -32,4 +36,19 @@ export const handleLogin = async (credential: Credential) => {
   if (request?.customerAccessTokenCreate?.customerAccessToken?.accessToken) {
     redirect('/store')
   }
+}
+
+
+export const handleCreateCart = async (items: CartItem[]) => {
+  const cookiesStore = cookies();
+  const accesToken = cookiesStore.get('accessToken')?.value as string;
+
+  if(!accesToken) redirect('/login')
+
+  const cartRepository = new GraphqlShoppingCartRepository();
+  const cartCreator = new ShoppingCartCreator(cartRepository);
+
+  const { cartCreate } = await cartCreator.create(accesToken, items);
+
+  return cartCreate?.cart?.checkoutUrl;
 }
