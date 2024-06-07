@@ -4,7 +4,7 @@ import { FormEvent, useCallback, useState } from "react";
 
 import { useFormData } from "app/presentation/shared/hooks/UseFormData";
 
-import { Signup } from "app/modules/signup/domain/Signup";
+import { Signup } from "app/modules/auth/domain/Signup";
 import { handleCreateUser } from "app/actions/signup";
 
 import { UseValidateForm } from "../../hooks/UseValidateForm";
