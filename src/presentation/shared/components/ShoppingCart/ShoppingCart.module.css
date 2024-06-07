@@ -1,0 +1,54 @@
+.ShoppingCart {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+}
+
+.ShoppingCart__counter {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ff4980;
+  color: #fff;
+  padding: 0.25rem;
+  top: -1rem;
+  right: -1rem;
+  z-index: 2;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ShoppingCart > svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: #fff;
+}
+
+.ShoppingCart__items {
+  position: absolute;
+  background: #13111a;
+  border: 1px solid #302c3f;
+  border-radius: 8px;
+  right: 0;
+  max-width: 320px;
+  min-width: 250px;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.ShoppingCart__buyButton {
+  background: #ff4980;
+  color: #fff;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}

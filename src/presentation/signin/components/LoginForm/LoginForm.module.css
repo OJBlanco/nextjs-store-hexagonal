@@ -1,0 +1,48 @@
+.NewAccountForm {
+  display: block;
+  margin: 5rem auto 0;
+  max-width: 30rem;
+}
+
+.NewAccountForm__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  background-image: linear-gradient(270deg, #4f56ff, #ff4980);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.NewAccountForm__form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.NewAccountForm__form input[type="text"],
+.NewAccountForm__form input[type="password"] {
+  color: #fff;
+  font-weight: 300;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #302c3f;
+  font-size: 1.25rem;
+}
+
+.NewAccountForm__form input[type="text"]:focus,
+.NewAccountForm__form input[type="password"]:focus {
+  outline: none;
+  border-bottom: 1px solid #ff4980;
+}
+
+.NewAccountForm__form > input[name="submit"] {
+  border: 1px solid #ff4980;
+  background: transparent;
+  color: #fff;
+  padding: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}
