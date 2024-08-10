@@ -11,11 +11,11 @@ import { UserData } from "../domain/UserData";
 import { CreateUserResponse } from "../domain/CreateUserResponse";
 import { CustomerAccessTokenResponse } from "../domain/CustomerAccessTokenResponse";
 
-export class GraphqlAuthRepository extends GraphQLClientBuilder implements AuthRepository {
+export class GraphqlAuthRepository implements AuthRepository {
   async signIn(credentials: Credential): Promise<AccessTokenResponse> {
     try {
       const cookiesStore = cookies()
-      const graphqlClient = GraphqlAuthRepository.getInstance().getClient();
+      const graphqlClient = GraphQLClientBuilder.getInstance().getClient();
 
       const variables = {
         ...credentials,
@@ -44,7 +44,7 @@ export class GraphqlAuthRepository extends GraphQLClientBuilder implements AuthR
     try {
       const userData = user.dataObject;
 
-      const graphqlClient = GraphqlAuthRepository.getInstance().getClient();
+      const graphqlClient = GraphQLClientBuilder.getInstance().getClient();
 
       const variables = {
         input: {
@@ -66,7 +66,7 @@ export class GraphqlAuthRepository extends GraphQLClientBuilder implements AuthR
       const cookieStore = cookies();
       const accessToken = cookieStore.get('accessToken')?.value;
 
-      const graphqlClient = GraphqlAuthRepository.getInstance().getClient();
+      const graphqlClient = GraphQLClientBuilder.getInstance().getClient();
 
       const request = await graphqlClient.request<CustomerAccessTokenResponse>(getCustomerQuery, {
         customerAccessToken: accessToken
