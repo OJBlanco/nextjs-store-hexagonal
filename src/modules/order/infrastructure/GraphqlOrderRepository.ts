@@ -3,10 +3,10 @@ import { OrderRepository } from "../domain/OrderRepository";
 import { Edge, OrderQueryResponse } from "../domain/OrderResponse";
 import { getOrdersQuery } from "app/graphql/cart/queries/getOrders";
 
-export class GraphqlOrderRepository extends GraphQLClientBuilder implements OrderRepository {
+export class GraphqlOrderRepository implements OrderRepository {
   async get(accessToken: string) {
     try {
-      const graphqlClient = GraphqlOrderRepository.getInstance().getClient();
+      const graphqlClient = GraphQLClientBuilder.getInstance().getClient();
 
       const variables = {
         customerAccessToken: accessToken
